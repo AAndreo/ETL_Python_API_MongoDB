@@ -1,5 +1,7 @@
 # Projeto de ETL: Python -> API -> Json -> MongoDB
-
+<p align="center">
+<img src="img/4277423.jpg" alt="drawing" width="500"/>
+</p>
 
 ## 📖Sobre:
 ETL : Extract, Transform, Load, é um processo essencial no mundo da análise de dados e business intelligence. Suas etapas envolvem a extração de dados de diversas fontes, a transformação desses dados para atender às necessidades de análise e, por fim, o carregamento dos dados em um destino final, como um data warehouse.
@@ -10,15 +12,27 @@ ETL : Extract, Transform, Load, é um processo essencial no mundo da análise de
 * Carregamento (Load): Os dados transformados são carregados em um repositório de dados, como um data warehouse, data mart ou banco de dados relacional, para análise e consulta. A carga pode ser incremental (apenas dados novos ou alterados) ou completa (todos os dados são recarregados).
 
 ## ⚙Como será nosso processo?
-Para todas as etapas, Extração, Transformação e Carregamento, utilizaremos a linguagem de programação Python.
+<p align="center">
+<img src="img/process-etl-mongodb.png" alt="drawing" width="500"/>
+</p>
+
+Para todas as etapas, **Extração**, **Transformação** e **Carregamento**, utilizaremos a linguagem de programação **Python**.
 
 Para a Extração, nossa origem dos dados será um arquivo Json, provido por uma API, utilizando a seguinte **URL: https://economia.awesomeapi.com.br**. Os dados retornados referem-se a cotações entre moedas em tempo real de um período específico.
+
+<p align="center">
+<img src="img/API_logo.png" alt="drawing" width="250"/>
+</p>
 
 > **API** Application Programming Interface (Interface de Programação de Aplicação), é um conjunto de padrões, ferramentas e protocolos que permite que diferentes aplicativos interajam e compartilhem dados de forma segura e eficiente. A interface pode ser pensada como um contrato de serviço entre duas aplicações.
 
 Para a etapa de Transformação, realizaremos todas as verificações, adequações, tratamentos e ajustes necessários para que no final, os dados estejam adequados para o processo de carregamento.
 
 A etapa final Carregamento, realizaremos as inserções dos dados em um banco de dados **NoSQL**, em nosso caso o **MongoDB**.
+
+<p align="center">
+<img src="img/mongodb.svg" alt="drawing" width="250"/>
+</p>
 
 >**NoSQL** (originalmente se referindo a *"no SQL"* : *"não SQL"* ou *"não relacional"*, posteriormente estendido para *Not Only SQL - Não Somente SQL*) é um termo genérico que representa os bancos de dados não relacionais.
 >Uma classe definida de banco de dados que fornecem um mecanismo para armazenamento e recuperação de dados que são modelados de formas diferentes das relações tabulares usadas nos bancos de dados relacionais.
@@ -28,6 +42,9 @@ A etapa final Carregamento, realizaremos as inserções dos dados em um banco de
 >Suas características permitem com que as aplicações modelem informações de modo muito mais natural, pois os dados podem ser aninhados em hierarquias complexas e continuar a ser indexáveis e fáceis de buscar.
 
 ## 💾Estrutura dos dados
+<p align="center">
+<img src="img/estrutura_dados_json.png" alt="drawing" width="500"/>
+</p>
 
 ## 💬 Legendas
 * bid : Compra
