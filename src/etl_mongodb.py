@@ -29,22 +29,16 @@ def conectar(uri:str)->MongoClient:
     return client   
 
 # Realiza a criação do Database e da Coleção de dados JSON.
-def criar_database(uri:str, database:str, collection:str)->str:
+def criar_database(uri:str, database:str, collection:str)->None:
    try:
-      client = conectar(uri=uri)
+    client = conectar(uri=uri)
 
-      databases = client.list_database_names()
-    
-      if database in databases:  # Verifica se o Database já existe. Caso contrário o cria.
-        db = client[database]
-        colecao = db[collection]
-        colecoes = db.list_collection_names()
+    db = client[database] # Se o Database não existir, é criado.
+    colecoes = db.list_collection_names()
 
-      if collection not in colecoes: # Verifica se a Coleção já exsite. Caso contrário a cria.
-        db = client[database]
+    if collection not in colecoes: # Verifica se a Coleção já exsite. Caso contrário a cria.
         db.create_collection(collection)
-        
-      return database, collection
+
    except mongoerrors.PyMongoError as e:
       print(f"Erro ao criar o Database/Collection: {e}")
    finally:
@@ -54,16 +48,9 @@ def criar_database(uri:str, database:str, collection:str)->str:
 def carregar_dados(uri:str, data:list, database:str, collection:str )->None:
     try:
         client = conectar(uri=uri)
-
-        databases = client.list_database_names()
-
-        if database in databases: 
-            db = client[database]
-            colecao = db[collection]
-            colecao.insert_many(data)
-        else:
-            print(f"Database: Erro")
-       
+        db = client[database]
+        colecao = db[collection]
+        colecao.insert_many(data)    
     except mongoerrors.PyMongoError as e:
         print(f"Erro ao carregar os dados: {e}")
     finally:
@@ -95,13 +82,13 @@ def transformar_dados(data:json)->list:
                 "moeda_de" : moeda_de,
                 "moeda_para" : moeda_para,
                 "conversao" : conversao,
-                "valor_maximo" : data[0]['high'],
-                "valor_minimo" : data[0]['low'],
-                "variacao" : data[0]['varBid'],
-                "porcentagem_variacao" : data[0]['pctChange'],
-                "valor_compra" : data[0]['bid'],
-                "valor_venda" : data[0]['ask'],
-                "data_negociacao" : datetime.strftime(datetime.fromtimestamp(int(data[0]['timestamp'])), '%d/%m/%Y %H:%M:%S') 
+                "valor_maximo" : float(data[0]['high']),
+                "valor_minimo" : float(data[0]['low']),
+                "variacao" : float(data[0]['varBid']),
+                "porcentagem_variacao" : float(data[0]['pctChange']),
+                "valor_compra" : float(data[0]['bid']),
+                "valor_venda" : float(data[0]['ask']),
+                "data_negociacao" : datetime.fromtimestamp(int(data[0]['timestamp']))
             }
     )        
 
@@ -111,13 +98,13 @@ def transformar_dados(data:json)->list:
                 "moeda_de" : moeda_de,
                 "moeda_para" : moeda_para,
                 "conversao" : conversao,
-                "valor_maximo" : data[i]['high'],
-                "valor_minimo" : data[i]['low'],
-                "variacao" : data[i]['varBid'],
-                "porcentagem_variacao" : data[i]['pctChange'],
-                "valor_compra" : data[i]['bid'],
-                "valor_venda" : data[i]['ask'],
-                "data_negociacao" : datetime.strftime(datetime.fromtimestamp(int(data[i]['timestamp'])), '%d/%m/%Y %H:%M:%S') 
+                "valor_maximo" : float(data[i]['high']),
+                "valor_minimo" : float(data[i]['low']),
+                "variacao" : float(data[i]['varBid']),
+                "porcentagem_variacao" : float(data[i]['pctChange']),
+                "valor_compra" : float(data[i]['bid']),
+                "valor_venda" : float(data[i]['ask']),
+                "data_negociacao" : datetime.fromtimestamp(int(data[i]['timestamp']))
             }
         )
         
@@ -134,10 +121,12 @@ def main():
             dados_tratados = transformar_dados(data=dados)
 
             # Cria o database e a coleção no MongoDB
-            database, collection = criar_database(uri=uri_mongo, database="engenharia_dados", collection="currency_quotes")
+            criar_database(uri=uri_mongo, database=os.getenv('DB_NAME'), collection=os.getenv('DB_COLLECTION'))
 
             # Carrega os dados tratados na coleção no MongoDB
-            carregar_dados(uri=uri_mongo, data=dados_tratados, database=database, collection=collection)  
+            carregar_dados(uri=uri_mongo, data=dados_tratados, database=os.getenv('DB_NAME'), collection=os.getenv('DB_COLLECTION'))  
+
+            print("Processo de ETL efetuado com sucesso!")
     except Exception as e:
         print(f"Erro de execução do processo de ETL: {e}")      
 
