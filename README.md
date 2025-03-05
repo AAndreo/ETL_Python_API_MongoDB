@@ -41,12 +41,16 @@ A etapa final Carregamento, realizaremos as inserções dos dados em um banco de
 >Classificado como um programa de banco de dados NoSQL, o MongoDB usa documentos semelhantes a JSON com esquemas.
 >Suas características permitem com que as aplicações modelem informações de modo muito mais natural, pois os dados podem ser aninhados em hierarquias complexas e continuar a ser indexáveis e fáceis de buscar.
 
-## 💾Estrutura dos dados
+## 💾Estrutura dos dados (coleção) - API
 <p align="center">
 <img src="img/estrutura_dados_json.png" alt="drawing" width="500"/>
 </p>
 
-## 💬 Legendas
+<p align="center">
+<img src="img/json_logo.png" alt="drawing" width="70"/>
+</p>
+
+### 💬 Legendas
 * bid : Compra
 * ask : Venda
 * varBid : Variação
@@ -55,6 +59,29 @@ A etapa final Carregamento, realizaremos as inserções dos dados em um banco de
 * low : Mínimo
 * timestamp : Hora da negociação (UTC)
 * create_date : Hora da negociação (UTC-3)
+
+## 💾Estrutura dos dados (coleção) - MongoDB
+<p align="center">
+<img src="img/estrutura_dados_json_mongodb.png" alt="drawing" width="500"/>  
+</p>
+
+### 🥚➡🐥 De : Para - Dicionário de Dados
+* moeda_de : code
+* moeda_para : codein
+* conversao : name
+* valor_maximo : high
+* valor_minimo : low
+* variacao : varBid
+* porcentagem_variacao : pctChange
+* valor_compra : bid
+* valor_venda : ask
+* data_negociacao : timestamp
+
+### 💡 Projetos
+* [ETL](src/etl_mongodb.py)
+* [Análise Exploratória](src/eda_mongodb.ipynb)
+
+
 
 
 
