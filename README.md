@@ -7,9 +7,9 @@
 ETL : Extract, Transform, Load, é um processo essencial no mundo da análise de dados e business intelligence. Suas etapas envolvem a extração de dados de diversas fontes, a transformação desses dados para atender às necessidades de análise e, por fim, o carregamento dos dados em um destino final, como um data warehouse.
 
 ## 📑As etapas:
-* Extração (Extract): Nesta etapa, os dados são coletados de fontes variadas, como bancos de dados, arquivos, APIs, entre outros.
-* Transformação (Transform): Aqui, os dados extraídos são limpos, filtrados, agregados, combinados, formatados, enriquecidos e integrados para garantir consistência e qualidade de acordo com os requisitos do sistema de destino. Transformações podem incluir a remoção de duplicatas, a conversão de formatos de dados, a padronização de valores e a criação de novas variáveis derivadas.
-* Carregamento (Load): Os dados transformados são carregados em um repositório de dados, como um data warehouse, data mart ou banco de dados relacional, para análise e consulta. A carga pode ser incremental (apenas dados novos ou alterados) ou completa (todos os dados são recarregados).
+* Extração (**Extract**): Nesta etapa, os dados são coletados de fontes variadas, como bancos de dados, arquivos, APIs, entre outros.
+* Transformação (**Transform**): Aqui, os dados extraídos são limpos, filtrados, agregados, combinados, formatados, enriquecidos e integrados para garantir consistência e qualidade de acordo com os requisitos do sistema de destino. Transformações podem incluir a remoção de duplicatas, a conversão de formatos de dados, a padronização de valores e a criação de novas variáveis derivadas.
+* Carregamento (**Load**): Os dados transformados são carregados em um repositório de dados, como um data warehouse, data mart ou banco de dados relacional, para análise e consulta. A carga pode ser incremental (apenas dados novos ou alterados) ou completa (todos os dados são recarregados).
 
 ## ⚙Como será nosso processo?
 <p align="center">
@@ -18,7 +18,7 @@ ETL : Extract, Transform, Load, é um processo essencial no mundo da análise de
 
 Para todas as etapas, **Extração**, **Transformação** e **Carregamento**, utilizaremos a linguagem de programação **Python**.
 
-Para a Extração, nossa origem dos dados será um arquivo Json, provido pela [**API**](https://economia.awesomeapi.com.br), retornando as cotações entre moedas em tempo real de um período específico.
+Para a **Extração**, nossa origem dos dados será um arquivo **JSON**, provido pela [**API**](https://economia.awesomeapi.com.br), retornando as cotações entre moedas em tempo real de um período específico.
 
 <p align="center">
 <img src="img/API_logo.png" alt="drawing" width="250"/>
@@ -26,9 +26,9 @@ Para a Extração, nossa origem dos dados será um arquivo Json, provido pela [*
 
 > **API** Application Programming Interface (Interface de Programação de Aplicação), é um conjunto de padrões, ferramentas e protocolos que permite que diferentes aplicativos interajam e compartilhem dados de forma segura e eficiente. A interface pode ser pensada como um contrato de serviço entre duas aplicações.
 
-Para a etapa de Transformação, realizaremos todas as verificações, adequações, tratamentos e ajustes necessários para que no final, os dados estejam adequados para o processo de carregamento.
+Para a etapa de **Transformação**, realizaremos todas as verificações, adequações, tratamentos e ajustes necessários para que no final, os dados estejam adequados para o processo de carregamento.
 
-A etapa final Carregamento, realizaremos as inserções dos dados em um banco de dados **NoSQL**, em nosso caso o **MongoDB**, com o auxílio da biblioteca [**PyMongo**](https://pymongo.readthedocs.io/en/stable/installation.html) para **Python**.
+A etapa final **Carregamento**, realizaremos as inserções dos dados em um banco de dados **NoSQL**, em nosso caso o **MongoDB**, com o auxílio da biblioteca [**PyMongo**](https://pymongo.readthedocs.io/en/stable/installation.html) para **Python**.
 
 <p align="center">
 <img src="img/mongodb.svg" alt="drawing" width="250"/>
