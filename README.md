@@ -18,7 +18,7 @@ ETL : Extract, Transform, Load, é um processo essencial no mundo da análise de
 
 Para todas as etapas, **Extração**, **Transformação** e **Carregamento**, utilizaremos a linguagem de programação **Python**.
 
-Para a Extração, nossa origem dos dados será um arquivo Json, provido por uma API, utilizando a seguinte **URL: https://economia.awesomeapi.com.br**. Os dados retornados referem-se a cotações entre moedas em tempo real de um período específico.
+Para a Extração, nossa origem dos dados será um arquivo Json, provido pela [**API**](https://economia.awesomeapi.com.br), retornando as cotações entre moedas em tempo real de um período específico.
 
 <p align="center">
 <img src="img/API_logo.png" alt="drawing" width="250"/>
@@ -28,7 +28,7 @@ Para a Extração, nossa origem dos dados será um arquivo Json, provido por uma
 
 Para a etapa de Transformação, realizaremos todas as verificações, adequações, tratamentos e ajustes necessários para que no final, os dados estejam adequados para o processo de carregamento.
 
-A etapa final Carregamento, realizaremos as inserções dos dados em um banco de dados **NoSQL**, em nosso caso o **MongoDB**.
+A etapa final Carregamento, realizaremos as inserções dos dados em um banco de dados **NoSQL**, em nosso caso o **MongoDB**, com o auxílio da biblioteca [**PyMongo**](https://pymongo.readthedocs.io/en/stable/installation.html) para **Python**.
 
 <p align="center">
 <img src="img/mongodb.svg" alt="drawing" width="250"/>
